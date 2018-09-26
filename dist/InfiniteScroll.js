@@ -289,8 +289,6 @@ var InfiniteScroll = (function(_Component) {
     {
       key: 'render',
       value: function render() {
-        var _this2 = this;
-
         var renderProps = this.filterProps(this.props);
 
         var children = renderProps.children,
@@ -301,7 +299,6 @@ var InfiniteScroll = (function(_Component) {
           loader = renderProps.loader,
           loadMore = renderProps.loadMore,
           pageStart = renderProps.pageStart,
-          ref = renderProps.ref,
           threshold = renderProps.threshold,
           useCapture = renderProps.useCapture,
           useWindow = renderProps.useWindow,
@@ -314,18 +311,17 @@ var InfiniteScroll = (function(_Component) {
             'loader',
             'loadMore',
             'pageStart',
-            'ref',
             'threshold',
             'useCapture',
             'useWindow',
           ]);
 
-        props.ref = function(node) {
-          _this2.scrollComponent = node;
-          if (ref) {
-            ref(node);
-          }
-        };
+        // props.ref = node => {
+        //   this.scrollComponent = node;
+        //   if (ref) {
+        //     ref(node);
+        //   }
+        // };
 
         var childrenArray = [children];
         if (hasMore) {
@@ -356,7 +352,7 @@ InfiniteScroll.propTypes = {
   loader: _propTypes2.default.node,
   loadMore: _propTypes2.default.func.isRequired,
   pageStart: _propTypes2.default.number,
-  ref: _propTypes2.default.func,
+  // ref: PropTypes.func,
   threshold: _propTypes2.default.number,
   useCapture: _propTypes2.default.bool,
   useWindow: _propTypes2.default.bool,
@@ -366,7 +362,7 @@ InfiniteScroll.defaultProps = {
   hasMore: false,
   initialLoad: true,
   pageStart: 0,
-  ref: null,
+  // ref: null,
   threshold: 250,
   useWindow: true,
   isReverse: false,
